@@ -1,4 +1,4 @@
-<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Connection"  errorPage="error.jsp" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>

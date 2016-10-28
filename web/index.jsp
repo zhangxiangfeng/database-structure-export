@@ -11,7 +11,11 @@
     <title>欢迎使用随意导数据库导出工具</title>
     <meta charset="utf8">
     <style>
-        input {
+        input, select, option {
+            vertical-align: middle;
+            width: 100%;
+            text-align: center;
+            background-color: white;
             border: none;
         }
 
@@ -26,8 +30,8 @@
         #container {
             margin-left: auto;
             margin-right: auto;
-            width: 168px;
-            margin-top: 300px;
+            width: 1000px;
+            margin-top: 200px;
         }
 
         table {
@@ -87,33 +91,42 @@
     </style>
 </head>
 <body id="container">
-<form action="mysql-export.jsp" method="post">
-    <table>
-        <tr>
-            <td>mysql.host</td>
-            <td><input tabindex="0" name="host"/></td>
-        </tr>
-        <tr>
-            <td>mysql.port</td>
-            <td><input tabindex="1" name="port"/></td>
-        </tr>
-        <tr>
-            <td>mysql.username</td>
-            <td><input tabindex="2" name="username"/></td>
-        </tr>
-        <tr>
-            <td>mysql.password</td>
-            <td><input tabindex="3" name="password"/></td>
-        </tr>
-        <tr>
-            <td>mysql.databaseName</td>
-            <td><input tabindex="4" name="databaseName"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input tabindex="5" type="submit" value="export"></td>
-        </tr>
-    </table>
+<center>
+    <form action="mysql-export.jsp" method="post">
+        <h1 style="text-align: center;">欢迎使用数据库导出工具,目前仅仅支持mysql</h1>
+        <table>
+            <tr>
+                <td> type</td>
+                <td><select>
+                    <option value="mysql">mysql</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td> host</td>
+                <td><input tabindex="0" name="host"/></td>
+            </tr>
+            <tr>
+                <td> port</td>
+                <td><input tabindex="1" name="port"/></td>
+            </tr>
+            <tr>
+                <td> username</td>
+                <td><input tabindex="2" name="username"/></td>
+            </tr>
+            <tr>
+                <td> password</td>
+                <td><input tabindex="3" name="password"/></td>
+            </tr>
+            <tr>
+                <td> databaseName</td>
+                <td><input tabindex="4" name="databaseName"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input tabindex="5" type="submit" value="开始导出"></td>
+            </tr>
+        </table>
 
-</form>
+    </form>
+</center>
 </body>
 </html>
