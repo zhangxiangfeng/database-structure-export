@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>欢迎使用随意导数据库导出工具</title>
+    <title>DB导出工具</title>
     <meta charset="utf8">
     <style>
         input, select, option {
@@ -93,33 +93,33 @@
 <body id="container">
 <center>
     <form action="mysql-export.jsp" method="post">
-        <h1 style="text-align: center;">欢迎使用数据库导出工具,目前仅仅支持mysql</h1>
+        <h1 style="text-align: center;">DB导出工具,目前仅仅支持mysql(以下数据,仅供测试使用)</h1>
         <table>
             <tr>
                 <td> type</td>
-                <td><select>
+                <td><select name="type">
                     <option value="mysql">mysql</option>
                 </select></td>
             </tr>
             <tr>
                 <td> host</td>
-                <td><input tabindex="0" name="host"/></td>
+                <td><input tabindex="0" name="host" value="127.0.0.1"/></td>
             </tr>
             <tr>
                 <td> port</td>
-                <td><input tabindex="1" name="port"/></td>
+                <td><input tabindex="1" name="port" value="3306"/></td>
             </tr>
             <tr>
                 <td> username</td>
-                <td><input tabindex="2" name="username"/></td>
+                <td><input tabindex="2" name="username" value="export"/></td>
             </tr>
             <tr>
                 <td> password</td>
-                <td><input tabindex="3" name="password"/></td>
+                <td><input tabindex="3" name="password" value="simon@sd!mYu>7FAD" type="password"/></td>
             </tr>
             <tr>
                 <td> databaseName</td>
-                <td><input tabindex="4" name="databaseName"/></td>
+                <td><input tabindex="4" name="databaseName" value="export_demo"/></td>
             </tr>
             <tr>
                 <td colspan="2"><input tabindex="5" type="submit" value="开始导出"></td>
