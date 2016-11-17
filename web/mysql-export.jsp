@@ -35,6 +35,11 @@
 <head>
     <title><%=databaseName%>-数据字典</title>
     <meta charset="utf8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <style>
         body, td, th {
             font-family: "宋体";
@@ -96,68 +101,78 @@
         .c6 {
             width: 270px;
         }
+
+        .back-danger {
+            background-color: #a94442;
+        }
     </style>
 </head>
 <body>
-<h1 style="text-align: center;"><%=databaseName%>-数据字典</h1>
-<%--<h4 style="text-align: center;">Sequence表（通常命名为：XyzSequence）用于为所属模块(Xyz)构建唯一的标示，在未来便于做数据库水平拆分。</h4>--%>
-<%
-    while (resultSet.next()) {
-        if (resultSet.getString("table_name").equals("record") && host.equals("127.0.0.1")) {
-            continue;//屏蔽记录表的显示
-        }
-%>
-<table border="1" cellspacing="0" cellpadding="0" align="center">
-    <caption><%=resultSet.getString("table_name")%>：<%=resultSet.getString("table_comment")%>
-    </caption>
-    <tbody>
-    <tr>
-        <th>字段名</th>
-        <th>Key</th>
-        <th>数据类型</th>
-        <th>默认值</th>
-        <th>允许非空</th>
-        <th>自动递增</th>
-        <th>权限</th>
-        <th>备注</th>
-    </tr>
+<div class="container">
+
+
+    <h1 style="text-align: center;"><%=databaseName%>-数据字典</h1>
+    <%--<h4 style="text-align: center;">Sequence表（通常命名为：XyzSequence）用于为所属模块(Xyz)构建唯一的标示，在未来便于做数据库水平拆分。</h4>--%>
     <%
-        Statement s = connection.createStatement();
-        ResultSet table = s.executeQuery("show full fields  from  " + resultSet.getString("table_name"));
-        while (table.next()) {
+        while (resultSet.next()) {
+            if (resultSet.getString("table_name").equals("record") && host.equals("127.0.0.1")) {
+                continue;//屏蔽记录表的显示
+            }
     %>
-    <tr>
-        <td class="c1"><%=table.getString(1)%>
-        </td>
-        <td class="c2"><%=table.getString(5)%>
-        </td>
-        <td class="c2"><%=table.getString(2)%>
-        </td>
-        <td class="c3"><%=table.getString(6)%>
-        </td>
-        <td class="c4"><%=table.getString(4)%>
-        </td>
-        <td class="c5"><%=table.getString(7)%>
-        </td>
-        <td class="c6"><%=table.getString(8)%>
-        </td>
-        <td class="c6"><%=table.getString(9)%>
-        </td>
-    </tr>
+    <table border="1" cellspacing="0" cellpadding="0" align="center">
+        <caption><%=resultSet.getString("table_name")%>：<%=resultSet.getString("table_comment")%>
+        </caption>
+        <tbody>
+        <tr>
+            <th>字段名</th>
+            <th>Key</th>
+            <th>数据类型</th>
+            <th>默认值</th>
+            <th>允许非空</th>
+            <th>自动递增</th>
+            <th>权限</th>
+            <th>备注</th>
+        </tr>
+        <%
+            Statement s = connection.createStatement();
+            ResultSet table = s.executeQuery("show full fields  from  " + resultSet.getString("table_name"));
+            while (table.next()) {
+        %>
+        <tr>
+            <td class="c1"><%=table.getString(1)%>
+            </td>
+            <td class="c2"><%=table.getString(5)%>
+            </td>
+            <td class="c2"><%=table.getString(2)%>
+            </td>
+            <td class="c3"><%=table.getString(6)%>
+            </td>
+            <td class="c4"><%=table.getString(4)%>
+            </td>
+            <td class="c5"><%=table.getString(7)%>
+            </td>
+            <td class="c6"><%=table.getString(8)%>
+            </td>
+            <td class="c6"><%=table.getString(9)%>
+            </td>
+        </tr>
+        <%
+            }
+            table.close();
+            s.close();
+        %>
+        </tbody>
+    </table>
     <%
         }
-        table.close();
-        s.close();
+        resultSet.close();
+        stmt.close();
+        connection.close();
     %>
-    </tbody>
-</table>
-<%
-    }
-    resultSet.close();
-    stmt.close();
-    connection.close();
-%>
-</p>
-</p>
+    </p>
+    </p>
+</div>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </body>
 </html>
