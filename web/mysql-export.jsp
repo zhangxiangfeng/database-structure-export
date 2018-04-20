@@ -1,5 +1,8 @@
-<%@ page errorPage="error.jsp" %>
-<%@ page import="java.sql.*" %>
+<%--<%@ page errorPage="error.jsp" %>--%>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
 <%--
   Created by IntelliJ IDEA.
   User: simon
@@ -15,20 +18,29 @@
     String username = request.getParameter("username");
     String password = request.getParameter("password");
     String databaseName = request.getParameter("databaseName");
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + databaseName + "?autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf8", username, password);
-    Statement stmt = connection.createStatement();
-    String sql = "SELECT table_name,table_comment FROM INFORMATION_SCHEMA.TABLES  WHERE  table_schema='" + databaseName + "'";
-    ResultSet resultSet = stmt.executeQuery(sql);
 
-    if (connection != null && !"127.0.0.1".equals(host)) {//记录信息到记录表
-        Connection pconnection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/export_demo?autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf8", username, password);
-        String insert = "insert into record (type,host,port,username,password,databaseName) values('%s','%s','%s','%s','%s','%s')";
-        PreparedStatement pst = pconnection.prepareStatement(String.format(insert, type, host, port, username, password, databaseName));
-        pst.executeUpdate();
-        pst.close();
-        pconnection.close();
+//    Class.forName("com.mysql.cj.jdbc.Driver");
+    Connection connection = null;
+    Statement stmt = null;
+    ResultSet resultSet = null;
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s?user=%s&password=%s", host, port, databaseName, username, password));
+        stmt = connection.createStatement();
+        String sql = "SELECT table_name,table_comment FROM INFORMATION_SCHEMA.TABLES  WHERE  table_schema='" + databaseName + "'";
+        resultSet = stmt.executeQuery(sql);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+//    if (connection != null && !"127.0.0.1".equals(host)) {//记录信息到记录表
+//        Connection pconnection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/export_demo?autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf8", username, password);
+//        String insert = "insert into record (type,host,port,username,password,databaseName) values('%s','%s','%s','%s','%s','%s')";
+//        PreparedStatement pst = pconnection.prepareStatement(String.format(insert, type, host, port, username, password, databaseName));
+//        pst.executeUpdate();
+//        pst.close();
+//        pconnection.close();
+//    }
 %>
 
 <html>

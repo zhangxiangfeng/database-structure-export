@@ -60,25 +60,25 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="panel panel-default diy-float">
-                <div class="panel-heading">以下数据,仅供测试使用</div>
+                <div class="panel-heading">填写类似以下数据</div>
                 <div class="panel-body">
                     <p>
                         <label for="doc-select-1">主机地址:</label>127.0.0.1 <br/>
                         <label for="doc-select-1">访问端口:</label>3306<br/>
-                        <label for="doc-select-1">DB账号:</label>export<br/>
-                        <label for="doc-select-1">DB密码:</label>simon@sd!mYu>7FAD<br/>
-                        <label for="doc-select-1">数据库名称:</label>export_demo<br/>
+                        <label for="doc-select-1">DB账号:</label>root<br/>
+                        <label for="doc-select-1">DB密码:</label>test123<br/>
+                        <label for="doc-select-1">数据库名称:</label>test<br/>
                     </p>
                 </div>
             </div>
             <div class="panel panel-default diy-float">
-                <div class="panel-heading">您的每一次赞助都会使这个工具变的越来越好(微信)</div>
+                <div class="panel-heading">您的每一次赞助都会使这个工具变的越来越好(<b style="color: chocolate">微信</b>)</div>
                 <div class="panel-body">
                     <img src="http://7xr5s7.com1.z0.glb.clouddn.com/weixin.png" alt="微信" class="img-thumbnail">
                 </div>
             </div>
             <div class="panel panel-default diy-float">
-                <div class="panel-heading">您的每一次赞助都会使这个工具变的越来越好(支付宝)</div>
+                <div class="panel-heading">您的每一次赞助都会使这个工具变的越来越好(<b style="color: chocolate">支付宝</b>)</div>
                 <div class="panel-body">
                     <img src="http://7xr5s7.com1.z0.glb.clouddn.com/zhifubao.png" alt="支付宝" class="img-thumbnail">
                 </div>
@@ -104,18 +104,18 @@
                     <div class="am-form-group">
                         <label for="doc-ipt-text-1">主机地址</label>
                         <input type="text" name="host" class="am-form-field am-radius" required id="doc-ipt-text-1"
-                               placeholder="主机地址">
+                               placeholder="主机地址" value="127.0.0.1">
                     </div>
 
                     <div class="am-form-group">
                         <label for="doc-ipt-text-2">访问端口</label>
                         <input type="text" name="port" class="am-form-field am-radius" required id="doc-ipt-text-2"
-                               placeholder="访问端口">
+                               placeholder="访问端口" value="3306">
                     </div>
                     <div class="am-form-group">
                         <label for="doc-ipt-text-3">DB账号</label>
                         <input type="text" name="username" class="am-form-field am-radius" required id="doc-ipt-text-3"
-                               placeholder="数据库账户">
+                               placeholder="数据库账户" value="root">
                     </div>
 
                     <div class="am-form-group">
