@@ -33,4 +33,4 @@ docker run -d -it -p 8555:8080  --name local_database-structure-export registry.
 
 > 如果您采用docker启动,注意数据库的Host,不要写localhost或127.0.0.1,此时localhost或127.0.0.1指的是容器本身而不是宿主机
 
-**如果感觉本资源帮到了您,给个star,鼓励一下作者吧!**
+**如果感觉本资源帮到了您,给个🌟,鼓励一下作者吧!**
